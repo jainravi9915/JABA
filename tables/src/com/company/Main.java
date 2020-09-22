@@ -8,12 +8,17 @@ import static java.lang.System.out;
 
 public class Main {
 
-    public static void tableInit(String[][] table) {
+
+    /**
+     * This function creates a table
+     * @param table 2dim arr
+     */
+    public static void tableInit(String[][] table, int columns, int rows) {
         Scanner scan = new Scanner(System.in);
         String text;
 
-        for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 4; j++){
+        for (int i = 0; i < columns; i++){
+            for (int j = 0; j < rows; j++){
                 if (j == 1){
                     table[j][i] = "|";
                 }
@@ -24,17 +29,23 @@ public class Main {
             }
         }
     }
-    public static String tableAlignment(String[][] table){
+
+    /**
+     * This function aligns the table
+     * @param table 2dim arr
+     * @return string
+     */
+    public static String tableAlignment(String[][] table, int columns, int rows){
         int maxLengthString;
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < columns; i++){
             maxLengthString = 0;
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < rows; j++) {
                 if (maxLengthString < table[j][i].length()) {
                     maxLengthString = table[j][i].length();
                 }
             }
-            for (int z = 0; z < 4; z++) {
+            for (int z = 0; z < rows; z++) {
                 if (z == 1){
                     table[z][i] += new String(new char[maxLengthString - table[z][i].length()]).replace("\0", "-");
                 }
@@ -44,12 +55,12 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < 4; i++){
-            table[i][2] += " |";
+        for (int i = 0; i < rows; i++){
+            table[i][columns - 1] += " |";
         }
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 3; j++){
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++){
                 s.append(table[i][j]);
             }
             s.append("\n");
@@ -64,14 +75,13 @@ public class Main {
     int columns;
     Scanner scan = new Scanner(System.in);
 
-    out.println("How many rows: ");
-    rows = scan.nextInt();
     out.println("How many columns: ");
     columns = scan.nextInt();
+    out.println("How many rows: ");
+    rows = scan.nextInt();
     String [][] table = new String[rows][columns];
-
-    tableInit(table);
-    s = tableAlignment(table);
+    tableInit(table, columns, rows);
+    s = tableAlignment(table, columns, rows);
     out.println(s);
 
     StringSelection stringSelection = new StringSelection(s);
