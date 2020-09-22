@@ -10,24 +10,32 @@ import static java.lang.System.out;
 
 public class Main {
 
-    public static void main(String[] args) {
-	Scanner scan = new Scanner(System.in);
-	int maxLenghtString = 0;
-	String s = new String("");
-    String [][] table = new String[4][3];
-	String text = new String();
-
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 4; j++){
-            if (j == 1){
-                table[j][i] = "|";
-            }
-            else {
-                text = scan.nextLine();
-                table[j][i] = "| " + text;
+    public static void tableInit(String[][] table, Scanner scan, String text){
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 4; j++){
+                if (j == 1){
+                    table[j][i] = "|";
+                }
+                else {
+                    text = scan.nextLine();
+                    table[j][i] = "| " + text;
+                }
             }
         }
     }
+
+    public static void main(String[] args) {
+
+	Scanner scan = new Scanner(System.in);
+	int maxLenghtString = 0;
+	String s = new String("");
+	int rows = 4;
+    int columns = 3;
+	String text = new String();
+
+
+    String [][] table = new String[rows][columns];
+    tableInit(table, scan, text);
 
     for (int i = 0; i < 3; i++){
         maxLenghtString = 0;
@@ -56,10 +64,12 @@ public class Main {
         }
         s += "\n";
     }
+
     out.print(s);
     StringSelection stringSelection = new StringSelection(s);
     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     clipboard.setContents(stringSelection, null);
+
 
     }
 }
