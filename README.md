@@ -1,6 +1,6 @@
-# JABA
-examples
-1) tables:
+# 2upo/JABA
+## examples
+### 1) tables:
 
 
 
@@ -13,5 +13,6 @@ examples
 
 
 
-2) sort string:
+### 2) sort string:
+
 [te3kst, e1to, perv2i, pro5st, rando4m, slo6v] => [e1to, perv2i, te3kst, rando4m, pro5st, slo6v]
