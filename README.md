@@ -1,5 +1,5 @@
 # 2upo/JABA
-## examples
+## example
 ### 1) tables:
 
 
